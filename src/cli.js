@@ -66,6 +66,11 @@ export const createCommands = (yargs) => {
             type: 'string',
             default: '{}',
         })
+        .positional('appTarget', {
+          describe: 'app target',
+          type: 'string',
+          default: ''
+        });
         webpackOptions(yargs);
     }, (argv) => serve(argv))
     .command('build', 'Build the source', (yargs) => {
