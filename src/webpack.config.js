@@ -85,9 +85,13 @@ export default (opts = {}) => {
   // Try to load local webpack config
   const localWebpackPath = rootResolve('webpack.config.js');
   const localWebpackConf = fs.existsSync(localWebpackPath) ? require(localWebpackPath).default : 0;
+
   if (isFunction(localWebpackConf)) {
-      const fnRes = localWebpackConf({ config });
-      config = isObject(fnRes) ? fnRes : config;
+    // loading webpack config
+    // ({ config }) creates a destructured parameter
+    // ({config}) => ( { config: config })
+    const fnRes = localWebpackConf({ config, args });
+    config = isObject(fnRes) ? fnRes : config;
   }
 
   cmdOpts.verbose && log(chalk.yellow('Webpack config:\n'), config, '\n');

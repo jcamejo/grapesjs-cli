@@ -10,6 +10,7 @@ import chalk from 'chalk';
  */
 export default (opts = {}) => {
     printRow('Start the development server...');
+
     const { host, port } = opts;
     const isVerb = opts.verbose;
     const resultWebpackConf = {

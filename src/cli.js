@@ -42,7 +42,7 @@ const webpackOptions = yargs => {
 
 export const createCommands = (yargs) => {
     return yargs
-    .command(['serve [port] [appTarget]', 'server'], 'Start the server', (yargs) => {
+    .command(['serve [port]', 'server'], 'Start the server', (yargs) => {
         yargs
         .positional('devServer', {
             describe: 'webpack-dev-server options',
